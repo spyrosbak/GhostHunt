@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem stunnedVFX;
+    [SerializeField] private ParticleSystem bustedVFX;
+
     public bool isCaptured;
     public bool isBusted;
 
@@ -23,13 +26,23 @@ public class Ghost : MonoBehaviour
     public void GetCaptured()
     {
         isCaptured = true;
-        //animation
+        stunnedVFX.Play();
     }
 
     public void GetBusted()
     {
-        //transform.Translate(Vector3.forward * Time.deltaTime, Space.World);
         isBusted = true;
+        bustedVFX.Play();
+        transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
+
+        StartCoroutine(DestroyObject());
+    }
+
+    private IEnumerator DestroyObject()
+    {
+        yield return new WaitForSeconds(1.1f);
+
+        //Destroy(gameObject);
         gameObject.SetActive(false);
     }
 }

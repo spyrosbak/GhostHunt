@@ -12,19 +12,12 @@ public class SpiritBox : MonoBehaviour
         ghostSpawner =  FindFirstObjectByType<GhostSpawner>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         highPitchSound = GetComponent<AudioSource>();
 
         StartCoroutine(BustGhosts());
         highPitchSound.Play();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private IEnumerator BustGhosts()
