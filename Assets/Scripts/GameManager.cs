@@ -1,6 +1,5 @@
 using Unity.XR.CoreUtils;
 using UnityEngine;
-using UnityEngine.XR.ARFoundation;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -36,7 +35,6 @@ public class GameManager : MonoBehaviour
         ghostSpawner = FindFirstObjectByType<XROrigin>().GetComponent<GhostSpawner>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -44,7 +42,6 @@ public class GameManager : MonoBehaviour
         PromptEMF();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!win)
@@ -90,12 +87,6 @@ public class GameManager : MonoBehaviour
         
         if (spiritBox.activeInHierarchy)
         {
-            //spiritBoxPanel.GetComponentInChildren<TextMeshProUGUI>().text = spiritBox.GetComponent<SpiritBox>().ghostsBusted.ToString();
-            //if (spiritBox.GetComponent<SpiritBox>().ghostsBusted && !timeOut)
-            //{
-            //    successPanel.SetActive(true);
-            //}
-
             int bustedGhosts = 0;
             foreach (GameObject ghost in ghostSpawner.spawnedObjects)
             {

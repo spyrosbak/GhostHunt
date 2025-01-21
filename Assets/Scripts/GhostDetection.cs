@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GhostDetection : MonoBehaviour
@@ -16,13 +15,11 @@ public class GhostDetection : MonoBehaviour
         beepSound = GetComponent<AudioSource>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(Beep());
     }
 
-    // Update is called once per frame
     void Update()
     {
         DetectorSignal();
